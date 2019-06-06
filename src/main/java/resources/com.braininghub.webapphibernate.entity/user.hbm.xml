@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.braininghub.webapphibernate.entity.User" table="USER">
+    <class name="com.braininghub.webapphibernate.entity.User" table="people">
         <id column="ID" name="id" type="java.lang.Integer" />
         <property column="USER_NAME" name="userName" type="java.lang.String" />
         <property column="PASSWORD" name="password1" type="string" />

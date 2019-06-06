@@ -14,7 +14,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
- /**
+import java.io.File;
+import java.net.URL;
+
+/**
  *
  * @author kopig
  */
@@ -24,8 +27,12 @@ public class UserDAO {
             String phone, String city) {
         try {
             // 1. configuring hibernate
-            Configuration configuration = new Configuration().configure();
- 
+            URL resource = getClass().getClassLoader().getResource("hibernate.cfg.xml");
+            if (resource == null) {
+                throw new IllegalArgumentException("No hibernate.cfg.xml found");
+            }
+            Configuration configuration = new Configuration().configure(new File(resource.getFile()));
+
             // 2. create sessionfactory
             SessionFactory sessionFactory = configuration.buildSessionFactory();
  
