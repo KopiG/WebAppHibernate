@@ -13,6 +13,6 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
         <!--<property name="hbm2ddl.auto">create</property>-->
-        <mapping resource="com.braininghub.webapphibernate.entity/user.hbm.xml" />
+        <mapping resource="hibernatemapping/user.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

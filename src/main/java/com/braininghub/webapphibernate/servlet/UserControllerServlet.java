@@ -31,11 +31,9 @@ public class UserControllerServlet extends HttpServlet {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String city = request.getParameter("city");
- 
-        HttpSession session = request.getSession(true);
+
         try {
-            UserDAO userDAO = new UserDAO();
-            userDAO.addUserDetails(userName, password, email, phone, city);
+            UserDAO.getInstance().addUserDetails(userName, password, email, phone, city);
             response.sendRedirect("Success");
         } catch (Exception e) {
  

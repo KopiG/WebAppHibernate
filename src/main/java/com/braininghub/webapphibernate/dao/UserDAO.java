@@ -22,9 +22,14 @@ import java.net.URL;
  * @author kopig
  */
 public class UserDAO {
- 
+
+    private static final UserDAO INSTANCE = new UserDAO();
+
+    private UserDAO() {
+    }
+
     public void addUserDetails(String userName, String password, String email,
-            String phone, String city) {
+                               String phone, String city) {
         try {
             // 1. configuring hibernate
             URL resource = getClass().getClassLoader().getResource("hibernate.cfg.xml");
@@ -58,4 +63,7 @@ public class UserDAO {
  
     }
 
+    public static UserDAO getInstance() {
+        return INSTANCE;
+    }
 }

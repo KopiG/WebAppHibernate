@@ -14,9 +14,7 @@ public class SuccessServlet extends HttpServlet {
                          HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 
-        writer.println("" + "" + "<center>"
-                + "Details Added Successfully" + "</center>" + ""
-                + "");
+        writer.println("Details Added Successfully");
     }
 
 }
