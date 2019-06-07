@@ -8,6 +8,7 @@ package com.braininghub.webapphibernate.dao;
 
 
 import com.braininghub.webapphibernate.entity.User;
+import com.braininghub.webapphibernate.util.HibernateSessionFactoryUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,20 +32,9 @@ public class UserDAO {
     public void addUserDetails(String userName, String password, String email,
                                String phone, String city) {
         try {
-            // 1. configuring hibernate
-            URL resource = getClass().getClassLoader().getResource("hibernate.cfg.xml");
-            if (resource == null) {
-                throw new IllegalArgumentException("No hibernate.cfg.xml found");
-            }
-            Configuration configuration = new Configuration().configure(new File(resource.getFile()));
-
-            // 2. create sessionfactory
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
  
-            // 3. Get Session object
-            Session session = sessionFactory.openSession();
- 
-            // 4. Starting Transaction
+            // Starting Transaction
+            Session session = HibernateSessionFactoryUtil.getSession();
             Transaction transaction = session.beginTransaction();
             User user = new User();
             user.setUserName(userName);
@@ -54,6 +44,7 @@ public class UserDAO {
             user.setPhone(phone);
             session.save(user);
             transaction.commit();
+            session.close();
             System.out.println("\n\n Details Added \n");
  
         } catch (HibernateException e) {

@@ -1,10 +1,13 @@
 package com.braininghub.webapphibernate.entity;
 
+import javax.validation.constraints.Size;
+
 /**
  * Created by kopig on 2019. 06. 06..
  */
 public class User {
     private int id;
+    @Size(min = 1, max = 3)
     private String userName;
     private String password1;
     private String email;
